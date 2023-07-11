@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memoizatioin</title>
+  </head>
+  <body>
+    <h1>Memoizatioin</h1>
+    <input type="text" name="" id="calNumber" />
+    <button type="button" onclick="effective()">calculate</button>
+
+    <script>
+      let sum = 0;
+      let calculatedSum = (n) => {
+        for (let i = 0; i < n; i++) {
+          sum += i;
+        }
+        return sum;
+      };
+      const memoizedSum = (clb) => {
+        console.time();
+        let cache = {};
+        console.log('cache', cache);
+        return function () {
+          let n = document.getElementById('calNumber').value;
+          console.log('n value', n);
+          if (n in cache) {
+            console.log('from cache');
+            return cache[n];
+          } else {
+            console.log('first time');
+            let result = clb(n);
+            cache[n] = result;
+            console.log('cache', cache);
+
+            return result;
+          }
+        };
+      };
+      //console.time();
+      const effective = memoizedSum(calculatedSum);
+
+      console.log(effective(2));
+      // console.timeEnd();
+    </script>
+  </body>
+</html>
