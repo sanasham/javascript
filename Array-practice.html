@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array</title>
+    <script>
+      console.log('***** adding element to array');
+      const data = [6, 2, 8, 4];
+      data.push(5);
+      console.log('result : ', data);
+      console.log('********************************');
+
+      console.log('***** sum of array elements');
+      let total = 0;
+      for (let i = 0; i < data.length; i++) {
+        console.log(i, data[i]);
+        total += data[i];
+      }
+      console.log('result : ', total);
+      for (let x of data) {
+        console.log('x value', x);
+      }
+      data.forEach((x) => console.log('inside foreach ', x));
+    </script>
+  </head>
+  <body>
+    <h1>All Array methods practice here</h1>
+  </body>
+</html>
