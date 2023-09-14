@@ -9,21 +9,56 @@ let is_shopOpen = true;
 
 let order = (time, work) => {
   return new Promise((resolve, reject) => {
-    console.log("inside new promise");
     if (is_shopOpen) {
-      console.log("inside if");
       setTimeout(() => {
-        console.log("inside setTimeout");
-
         resolve(work());
       }, time);
     } else {
-      console.log("inside else");
       reject(console.log("our shop is closed"));
     }
   });
 };
 
-order(4000, () => {
-  console.log(`${stocks.Fruits[0]}`);
-});
+order(2000, () => {
+  console.log(`${stocks.Fruits[0]} was selected`);
+})
+  .then(() => {
+    return order(0, () => {
+      return console.log("production has has started");
+    });
+  })
+
+  .then(() => {
+    return order(2000, () => {
+      return console.log("the fruit was chopped");
+    });
+  })
+  .then(() => {
+    return order(1000, () => {
+      return console.log(`${stocks.liquid[0]} and ${stocks.liquid[1]} were selected`);
+    });
+  })
+  .then(() => {
+    return order(1000, () => {
+      return console.log(`start the machine`);
+    });
+  })
+  .then(() => {
+    return order(3000, () => {
+      return console.log(`ice cream placed on ${stocks.holder[0]} `);
+    });
+  })
+  .then(() => {
+    return order(1000, () => {
+      return console.log(` ${stocks.toppings[0]} was selected`);
+    });
+  })
+  .then(() => {
+    return order(1000, () => {
+      return console.log(`ice cream was served`);
+    });
+  })
+  .catch(() => {
+    console.log('customer left shop');
+  });
+  
