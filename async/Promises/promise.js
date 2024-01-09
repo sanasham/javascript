@@ -60,5 +60,8 @@ order(2000, () => {
   })
   .catch(() => {
     console.log('customer left shop');
-  });
+  })
+  .finally(() => {
+    console.log("day ended, shop is closed");
+  })
   
