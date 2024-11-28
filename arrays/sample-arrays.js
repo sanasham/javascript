@@ -156,7 +156,124 @@ const givenArray = [2, 4, 6, 8, 34, 54, 44];
 function secondLargest(a) {
   const unique = Array.from(new Set(a));
   unique.sort((a, b) => a - b);
-  console.log("lenght", unique.length - 1);
+
   return unique[unique.length - 2];
 }
-console.log("second larget number", secondLargest(givenArray));
+console.log("second larget number", secondLargest([10, 5, 10]));
+
+const givenArray2 = [2, 4, 6, 8, 34, 54, 44];
+
+function secondLargestOptimised(arr) {
+  let larget = Number.NEGATIVE_INFINITY;
+  let secondLarget = Number.NEGATIVE_INFINITY;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > larget) {
+      larget = arr[i];
+      secondLarget = larget;
+    } else if (arr[i] > secondLarget && arr[i] > larget) {
+      secondLargest = arr[i];
+    }
+  }
+  return secondLargest;
+}
+
+console.log("second largest", secondLargest(givenArray2));
+console.log("second largest ", secondLargest([12, 35, 1, 10, 34, 1]));
+
+//Rotate an array by k
+
+function rotateArray(arr, k) {
+  console.log("object", arr.slice(1));
+  let size = arr.length;
+  let temp = arr;
+  if (size > k) {
+    for (let i = 1; i <= k; i++) {
+      let first = arr[i - 1];
+      temp = temp.slice(i);
+      temp.push(first);
+    }
+  }
+  console.log("temp", temp);
+  console.log("arr", arr);
+  console.log("givenArray2", givenArray2);
+}
+// console.log("rotate an array", rotateArray(givenArray2, 8));
+console.log("rotate an array", rotateArray(givenArray2, 2));
+
+console.log("===========Rotate clockwise===================");
+
+function rotateMyArray(num, k) {
+  for (let index = 0; index < k; index++) {
+    console.log("lenth ", num.length);
+    const rotated = num.splice(num.length - 1, 1)[0];
+    console.log("splice", rotated);
+    num.unshift(rotated);
+
+    // console.log("first", num);
+  }
+  return num;
+}
+
+console.log("clock wise rotation", rotateMyArray([1, 2, 3, 4, 5], 2));
+
+function removeDuplicates(num) {
+  let size = num.length;
+  for (let index = 0; index < num.length; index++) {
+    const element = num[index];
+    const element1 = num[index + 1];
+    if (element === element1) {
+      const final = num.splice(index + 1, 1);
+
+      console.log("final", final);
+      index--;
+    }
+  }
+  return num;
+}
+
+console.log(removeDuplicates([1, 1, 2, 3, 4, 4, 5, 5]));
+console.log(removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]));
+
+//without JS inbuilt function
+// Two pointer approch
+
+function removeDuplicatesWithoutJS(nums) {
+  if (nums.length === 0) return 0;
+  // [0,0,1,1,1,2,2,3,3,4]
+
+  //0, 0, 1, 1, 1, 2, 2, 3, 3, 4
+  let i = 0;
+  for (let j = 1; j < nums.length; j++) {
+    if (nums[i] !== nums[j]) {
+      i++;
+      nums[i] = nums[j];
+    }
+    // console.log("nums values ", nums);
+  }
+  nums.splice(i + 1);
+  return nums;
+}
+console.log(removeDuplicatesWithoutJS([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]));
+
+console.log(
+  "======================REVERSE AN ARRAY==========================="
+);
+
+function myReverse(arr) {
+  let reversed = [];
+  for (let i = arr.length - 1; i >= 0; i--) {
+    reversed.push(arr[i]);
+  }
+  return reversed;
+}
+console.log(myReverse([1, 2, 3, 4, 5]));
+
+console.log(
+  "======================INPLACE REVERSE AN ARRAY==========================="
+);
+
+function inPlaceReverse(myarr) {
+  let left = 0;
+  let right = myarr.length - 1;
+  while (left < right) {}
+}
