@@ -1,9 +1,10 @@
-// let x =1;
+// let x = 1;
 // let y = 3;
 // console.log(x++ );
 // console.log("after increment :",x++ );
 // console.log(++y);
 // console.log(x++ + ++y);
+// console.log("x,y", x, y);
 
 let arr = [1, 2, 3];
 function addToArr(value) {
