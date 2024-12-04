@@ -73,4 +73,37 @@ console.log(data);
 
 let arr1 = [1, 2, 3, 4, 5, 0, 10];
 let newArr1 = arr1.splice(2, 4, 8, 9, 6);
-console.log(newArr1);
+console.log(arr1);
+console.log("new array", newArr1);
+
+// extracting input values
+
+const input = [
+  { amt: 52 },
+  { mrp: { tax: { amt: 11 } } },
+  { mrp: { tax: { amt: 24 } } },
+  { amt: 37 },
+  { tax: { amt: 42 } },
+];
+
+function extractAmtValues(obj) {
+  let amts = [];
+  console.log("object", obj);
+
+  if (typeof obj === "object" && obj !== null) {
+    console.log("inside if");
+    for (let key in obj) {
+      console.log("key", key);
+      if (key === "amt") {
+        amts.push(obj[key]);
+      } else {
+        console.log("not key", key);
+        amts = amts.concat(extractAmtValues[obj[key]]);
+      }
+    }
+  }
+  return amts;
+}
+
+const allAmts = input.flatMap((item) => extractAmtValues(item));
+console.log("all amounts", allAmts);
